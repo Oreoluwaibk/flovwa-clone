@@ -1,24 +1,5 @@
 
 
-
-export function toFormData(payload: Record<string, any>): FormData {
-  // Use the browser FormData if available, otherwise fallback to a polyfill
-  const formData = new (typeof window !== "undefined" ? FormData : (require("form-data") as any))();
-
-  const appendFormData = (data: any, parentKey?: string) => {
-    if (data && typeof data === "object" && !(data instanceof File) && !(data instanceof Blob)) {
-      Object.keys(data).forEach((key) => {
-        appendFormData(data[key], parentKey ? `${parentKey}[${key}]` : key);
-      });
-    } else {
-      formData.append(parentKey!, data == null ? "" : data);
-    }
-  };
-
-  appendFormData(payload);
-  return formData;
-}
-
 export function timeAgo(dateString: string): string {
   const date = new Date(dateString);
   const now = new Date();
@@ -39,37 +20,7 @@ export function timeAgo(dateString: string): string {
   return `${yearsAgo} year${yearsAgo > 1 ? 's' : ''} ago`;
 }
 
-export function getRelativeDateLabel(dateString: string): string {
-  const inputDate = new Date(dateString);
-  const now = new Date();
 
-  // Normalize to midnight for accurate day difference
-  const oneDay = 1000 * 60 * 60 * 24;
-  const diffInDays = Math.floor(
-    (inputDate.setHours(0, 0, 0, 0) - now.setHours(0, 0, 0, 0)) / oneDay
-  );
-
-  if (diffInDays === 0) return "Today";
-  if (diffInDays === 1) return "Tomorrow";
-  if (diffInDays === -1) return "Yesterday";
-
-  if (diffInDays > 1 && diffInDays < 7) return `In ${diffInDays} days`;
-  if (diffInDays >= 7 && diffInDays < 14) return "1 week from now";
-  if (diffInDays >= 14 && diffInDays < 21) return "2 weeks from now";
-  if (diffInDays >= 21 && diffInDays < 30) return "3 weeks from now";
-  if (diffInDays >= 30 && diffInDays < 60) return "1 month from now";
-  if (diffInDays >= 60) return "More than a month from now";
-
-  // Handle past dates
-  if (diffInDays < -1 && diffInDays > -7) return `${Math.abs(diffInDays)} days ago`;
-  if (diffInDays <= -7 && diffInDays > -14) return "1 week ago";
-  if (diffInDays <= -14 && diffInDays > -21) return "2 weeks ago";
-  if (diffInDays <= -21 && diffInDays > -30) return "3 weeks ago";
-  if (diffInDays <= -30 && diffInDays > -60) return "1 month ago";
-  if (diffInDays <= -60) return "More than a month ago";
-
-  return "Invalid date";
-}
 
 export interface ScheduleItem {
   id: string;

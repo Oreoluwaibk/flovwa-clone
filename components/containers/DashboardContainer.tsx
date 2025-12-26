@@ -22,8 +22,9 @@ const DashboardContainer: React.FC<DashboardProps> = ({
     description
 }) => {
     const [open, setOpen] = useState(false);
-    const { logout, user, loading  } = useAuth();
+    const { logout, user, loading, session  } = useAuth();
 
+    if(!session) return null
   return (
     <Layout>
         <Sider 

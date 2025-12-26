@@ -55,6 +55,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if(authDetails) {
         setSession(authDetails.session);
         setUser(authDetails.user || authDetails.session.user)
+      }else {
+        router.replace("/auth/login")
       }
     };
 
