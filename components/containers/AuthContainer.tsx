@@ -40,7 +40,7 @@ export const AuthContainer: React.FC<AuthProps> = ({
     <Layout className="min-h-screen! flex justify-center py-5 px-3 items-center bg-linear-to-br! from-[#9013fe]! to-[#6D28D9]!">
       <Content className="flex justify-center items-center w-full max-w-105">
         <motion.div initial="hidden" animate="visible" variants={variants} className="w-full">
-          <Card className="w-full shadow-lg bg-white rounded-[10px]" bodyStyle={{ padding: "2rem" }}>
+          <Card styles={{ body: {padding: "2rem" }}} className="w-full shadow-lg bg-white rounded-[10px]">
             <div className="mb-7.5 text-center">
               <h1 className="text-2xl text-[#6D28D9] font-semibold mb-2">{title}</h1>
               <p className="text-sm text-[#6B7280]">{description}</p>

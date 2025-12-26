@@ -94,28 +94,28 @@ export default function Step4({ onBack, onContinue }: Props) {
       </div>
 
       <div className="flex flex-row-reverse mt-auto pt-8 w-full gap-4">
-          <button
-            type="button"
-            disabled={selectedTools.size === 0}
-            onClick={() => onContinue(tools.filter((t) => selectedTools.has(t.name)))}
-            className={`inline-flex w-full justify-center font-semibold items-center transition-all duration-[0.25s] text-white rounded-[100px] py-3 px-5 border-none
-              ${
-                selectedTools.size > 0
-                  ? "bg-[#9013FE] hover:bg-[#A29BFE] hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 active:translate-y-0"
-                  : "bg-[#d3c7f9] cursor-not-allowed"
-              }`}
-          >
-            Continue
-          </button>
+        <button
+          type="button"
+          disabled={selectedTools.size === 0}
+          onClick={() => onContinue(tools.filter((t) => selectedTools.has(t.name)))}
+          className={`inline-flex w-full justify-center font-semibold items-center transition-all duration-[0.25s] text-white rounded-[100px] py-3 px-5 border-none
+            ${
+              selectedTools.size > 0
+                ? "bg-[#9013FE] hover:bg-[#A29BFE] hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 active:translate-y-0"
+                : "bg-[#d3c7f9] cursor-not-allowed"
+            }`}
+        >
+          Continue
+        </button>
 
-          <button
-            type="button"
-            onClick={onBack}
-            className="bg-transparent w-full font-medium border-none shadow-none rounded-xl hover:text-[#9013FE] hover:underline text-sm"
-          >
-            Back
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onBack}
+          className="bg-transparent w-full font-medium border-none shadow-none rounded-xl hover:text-[#9013FE] hover:underline text-sm"
+        >
+          Back
+        </button>
+      </div>
     </div>
   );
 }

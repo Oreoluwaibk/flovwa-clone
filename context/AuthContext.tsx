@@ -46,22 +46,41 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [success, setSuccess] = useState(false);
   const { modal } = App.useApp()
 
+
   useEffect(() => {
     const init = async () => {
       const authStorage = localStorage.getItem("flowva-clone-user-auth");
-      let authDetails = null;
-      if(authStorage) authDetails = JSON.parse(authStorage)
+      const authDetails = authStorage ? JSON.parse(authStorage) : null;
 
-      if(authDetails) {
+      if (authDetails) {
         setSession(authDetails.session);
-        setUser(authDetails.user || authDetails.session.user)
-      }else {
-        router.replace("/auth/login")
+        setUser(authDetails.user || authDetails.session?.user);
+        return;
+      }
+
+      const path = window.location.pathname;
+
+      const publicRoutes = [
+        "/",
+        "/auth/signup",
+        "/auth/login",
+        "/auth/forgot-password",
+        "/auth/reset-password",
+        "/auth/callback",
+        "/auth/confirm",
+        "/auth/error"
+      ];
+
+      const isPublic = publicRoutes.includes(path);
+
+      if (!isPublic) {
+        router.replace("/auth/login");
       }
     };
 
     init();
-  }, []);
+  }, [router]);
+
 
   
   const loginWithEmail = async (email: string, password: string) => {
