@@ -1,0 +1,124 @@
+@import "tailwindcss";
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --primary: #6D28D9;
+    box-sizing: border-box;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-primary: var(--primary);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+    --font-roboto: var(--font-roboto);
+    --radius: 16px;
+    --font-default: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji"
+}
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-default) !important;
+}
+
+.ant-input-password-icon {
+    color: #A78BFA;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+input {
+    /* padding: 11px 14px !important; */
+}
+
+.ant-form-item-vertical {
+    margin-bottom: 12px !important;
+}
+
+.notification-container {
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    transition: background-color ease .3;
+    width: 25px;
+    height: 25px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-container:hover {
+    background-color: #cbd5e0;
+    color: #9013fe !important;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 12px;
+    background: linear-gradient(45deg, #9013fe, #ff9ff5);
+    color: #fff;
+    cursor: default;
+}
+
+.ant-dropdown-placement-bottomRight .ant-dropdown-menu {
+    border-radius: 16px !important;
+    padding: 0 !important;
+    border-left: none !important;
+}
+
+.ant-dropdown-placement-bottomRight .ant-dropdown-menu-item {
+    /* border-radius: 16px !important; */
+    padding: 0 !important;
+    border-left: none !important;
+}
+
+.logout .ant-dropdown-menu {
+    /* border-radius: 16px !important; */
+    /* padding: 0 !important; */
+    border-left: none !important;
+}
+
+.ant-tabs-tab {
+    transition: background-color ease 0.3s;
+    padding: 10px 20px !important;
+}
+
+.ant-tabs-tab:hover {
+    background-color: rgba(144, 19, 254, 0.05) !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active {
+    background-color: rgba(144, 19, 254, 0.05) !important;
+}
+
+.notification .ant-dropdown-menu-item {
+    padding: 0 !important;
+}
+
+.ant-menu {
+    display: flex !important;
+    gap: 6px;
+    flex-direction: column !important;
+    /* gap: 10px; */
+}
+
+.ant-menu-item-selected {
+    background-color: rgba(144, 19, 254, 0.2) !important;
+}
+
+.ant-menu-light.ant-menu-root.ant-menu-inline,
+ :where(.css-dev-only-do-not-override-1iph5z3).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-inline,
+ :where(.css-dev-only-do-not-override-1iph5z3).ant-menu-light.ant-menu-root.ant-menu-vertical,
+ :where(.css-dev-only-do-not-override-1iph5z3).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-vertical {
+    border-inline-end: none !important;
+}
